@@ -9,15 +9,17 @@ try:
     from datetime import datetime
     from PIL import Image, ImageTk
     import requests
-    import xlrd
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Installing Libraries")
-    os.system("pip install datetime pillow requests xlrd")
+    os.system("pip install datetime pillow requests gspread oauth2client")
 
 from datetime import datetime
 from PIL import Image, ImageTk
 import requests
-import xlrd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 root = Tk()    
 root.attributes('-fullscreen', True)
@@ -29,7 +31,23 @@ def time_format_for_location(utc_with_tz):
  
  
 city_value = StringVar()
- 
+
+
+scope = ['https://spreadsheets.google.com/feeds',
+    'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+gc = gspread.authorize(credentials)
+SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
+try:
+    spreadsheet = gc.open_by_key(SHEET_ID)
+    print("Successfully opened the spreadsheet.")
+except gspread.exceptions.APIError as e:
+    print("Error: Could not open the spreadsheet. Reason:", e)
+
+spreadsheet = gc.open_by_key(SHEET_ID)
+worksheet = spreadsheet.worksheet("Sheet1")
+rows = worksheet.get_all_records()
+    
 def customWeather():
     lng = 0
     lat = 0
@@ -39,15 +57,11 @@ def customWeather():
  
     city_name=city_value.get()
 
-    loc = ("cities.xls")
-    wb = xlrd.open_workbook(loc)     
-    sheet = wb.sheet_by_index(0)
-
-    for i in range(0,45000):
-        if sheet.cell_value(i,0) == city_name:
-            country = sheet.cell_value(i,1)
-            lat = sheet.cell_value(i,2)
-            lng = sheet.cell_value(i,3)
+    for i in range(0,44999):
+        if rows[i].get("City") == city_name:
+            country = rows[i].get("Country")
+            lat = rows[i].get("Latitude")
+            lng = rows[i].get("Longitude")
         
     time_url = "https://www.timeapi.io/api/Time/current/coordinate?latitude="+str(lat)+"&longitude="+str(lng)
     weather_url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid='+api_key
@@ -89,17 +103,12 @@ def customWeather():
     inpfield.insert(INSERT, weather) 
 
 def showWeather():
-    lat = 0
-    lng = 0
-    loc = ("cities.xls")
-    wb = xlrd.open_workbook(loc)     
-    sheet = wb.sheet_by_index(0)
-    n = random.randrange(0,45000)
-        
-    city = sheet.cell_value(n,0)
-    country = sheet.cell_value(n,1)
-    lat = sheet.cell_value(n,2)
-    lng = sheet.cell_value(n,3)
+
+    n = random.randrange(0,44999)
+    city = rows[n].get("City")
+    country = rows[n].get("Country")
+    lat = rows[n].get("Latitude")
+    lng = rows[n].get("Longitude")
 
     autofield.delete("1.0", "end")
 
