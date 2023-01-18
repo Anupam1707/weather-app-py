@@ -60,6 +60,7 @@ def customWeather():
     lat = 0
     we = None
     xl = None
+    co = None
     country = "Unknown"
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
