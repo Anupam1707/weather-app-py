@@ -58,18 +58,33 @@ rows = worksheet.get_all_records()
 def customWeather():
     lng = 0
     lat = 0
+    we = None
+    xl = None
     country = "Unknown"
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
  
     city_name=city_value.get()
 
-    for i in range(0,44999):
+    for i in range(0,len(rows)):
         if rows[i].get("City") == city_name:
             country = rows[i].get("Country")
             lat = rows[i].get("Latitude")
             lng = rows[i].get("Longitude")
-        
+    
+    if country = "Unknown":
+        for i in range(0,len(rows)):
+            if rows[i].get("Country") = city_name:
+                co = True
+            else :
+                xl = False
+                co = False
+                
+        if weather_info['cod'] == 200:
+            we = True
+        else :
+            we = False
+           
     time_url = "https://www.timeapi.io/api/Time/current/coordinate?latitude="+str(lat)+"&longitude="+str(lng)
     weather_url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid='+api_key
  
@@ -81,7 +96,8 @@ def customWeather():
  
     inpfield.delete("1.0", "end")   
   
-    if weather_info['cod'] == 200:
+    
+    if we == True and co == False:
         kelvin = 273 
         tempc = int(weather_info['main']['temp'] - kelvin)
         tempk = int(weather_info['main']['temp'])
@@ -103,7 +119,10 @@ def customWeather():
          
         weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
     else:
-        weather = f"\n\tWeather for '{city_name}' not found!\n\tKindly Enter valid City Name !!"
+        if co = True:
+            weather = f"You have given a name of a Country.\nPlease enter a name of a City"
+        elif we = False:
+            weather = f"Weather for {city_name} not found"
  
  
  
