@@ -8,6 +8,7 @@ import os
 try: 
     from datetime import datetime
     from PIL import Image, ImageTk
+    from io import BytesIO
     import requests
     import gspread
     from oauth2client.service_account import ServiceAccountCredentials
@@ -17,6 +18,7 @@ except ImportError:
 
 from datetime import datetime
 from PIL import Image, ImageTk
+from io import BytesIO
 import requests
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -190,9 +192,10 @@ def time():
     lbl.config(text=string)
     lbl.after(1000, time)
     
-back = Image.open("bg.jpg")
-bg = back.resize((1280, 720))
-test = ImageTk.PhotoImage(bg)
+response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/bg.jpg")
+img = Image.open(BytesIO(response.content))
+img = img.resize((1280,720), Image.ANTIALIAS)
+test = ImageTk.PhotoImage(img)
 bk = Label(image=test)
 bk.image = test
 bk.place(x=0, y=0)  
