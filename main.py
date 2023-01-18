@@ -72,7 +72,7 @@ def customWeather():
             lat = rows[i].get("Latitude")
             lng = rows[i].get("Longitude")
     
-    if country = "Unknown":
+    if country == "Unknown":
         for i in range(0,len(rows)):
             if rows[i].get("Country") = city_name:
                 co = True
