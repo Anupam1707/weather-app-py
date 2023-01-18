@@ -59,7 +59,7 @@ def customWeather():
  
     city_name=city_value.get()
 
-    for i in range(0,44999):
+    for i in range(0,len(rows)):
         if rows[i].get("City") == city_name:
             country = rows[i].get("Country")
             lat = rows[i].get("Latitude")
@@ -106,7 +106,7 @@ def customWeather():
 
 def showWeather():
 
-    n = random.randrange(0,44999)
+    n = random.randrange(0,len(rows))
     city = rows[n].get("City")
     country = rows[n].get("Country")
     lat = rows[n].get("Latitude")
