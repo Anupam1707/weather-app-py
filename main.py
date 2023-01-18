@@ -75,15 +75,15 @@ def customWeather():
     if country == "Unknown":
         for i in range(0,len(rows)):
             if rows[i].get("Country") == city_name:
-                co = True
+                co = 1
             else :
-                xl = False
-                co = False
+                xl = 0
+                co = 0
                 
         if weather_info['cod'] == 200:
-            we = True
+            we = 1
         else :
-            we = False
+            we = 0
            
     time_url = "https://www.timeapi.io/api/Time/current/coordinate?latitude="+str(lat)+"&longitude="+str(lng)
     weather_url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid='+api_key
@@ -97,7 +97,7 @@ def customWeather():
     inpfield.delete("1.0", "end")   
   
     
-    if we == True and co == False:
+    if we == 1 and co == 0:
         kelvin = 273 
         tempc = int(weather_info['main']['temp'] - kelvin)
         tempk = int(weather_info['main']['temp'])
@@ -119,9 +119,9 @@ def customWeather():
          
         weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
     else:
-        if co == True:
+        if co == 1:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
-        elif we == False:
+        elif we == 0:
             weather = f"Weather for {city_name} not found"
  
  
