@@ -119,15 +119,16 @@ def customWeather():
         sunset_time = time_format_for_location(sunset + timezone)\
          
         weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
+        inpfield.insert(INSERT, weather) 
     else:
         if co == 1:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
+            inpfield.insert(INSERT, weather) 
         elif we == 0:
             weather = f"Weather for {city_name} not found"
- 
- 
- 
-    inpfield.insert(INSERT, weather) 
+            inpfield.insert(INSERT, weather) 
+            
+    
 
 def showWeather():
 
