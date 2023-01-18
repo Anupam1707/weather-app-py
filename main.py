@@ -74,7 +74,7 @@ def customWeather():
     
     if country == "Unknown":
         for i in range(0,len(rows)):
-            if rows[i].get("Country") = city_name:
+            if rows[i].get("Country") == city_name:
                 co = True
             else :
                 xl = False
