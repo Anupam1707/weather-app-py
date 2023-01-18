@@ -37,6 +37,11 @@ city_value = StringVar()
 
 scope = ['https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/drive']
+url = 'https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/credentials.json'
+page = requests.get(url)
+with open("credentials.json","+w") as f:
+          f.write(page.text)
+          f.close()
 credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 gc = gspread.authorize(credentials)
 SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
@@ -59,7 +64,7 @@ def customWeather():
  
     city_name=city_value.get()
 
-    for i in range(0,len(rows)):
+    for i in range(0,44999):
         if rows[i].get("City") == city_name:
             country = rows[i].get("Country")
             lat = rows[i].get("Latitude")
@@ -106,7 +111,7 @@ def customWeather():
 
 def showWeather():
 
-    n = random.randrange(0,len(rows))
+    n = random.randrange(0,44999)
     city = rows[n].get("City")
     country = rows[n].get("Country")
     lat = rows[n].get("Latitude")
