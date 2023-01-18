@@ -119,9 +119,9 @@ def customWeather():
          
         weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
     else:
-        if co = True:
+        if co == True:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
-        elif we = False:
+        elif we == False:
             weather = f"Weather for {city_name} not found"
  
  
