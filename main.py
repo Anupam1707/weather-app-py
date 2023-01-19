@@ -47,14 +47,17 @@ gc = gspread.authorize(credentials)
 SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
 try:
     spreadsheet = gc.open_by_key(SHEET_ID)
-    print("Successfully opened the spreadsheet.")
+    print("Successfully syncronized the spreadsheet.")
 except gspread.exceptions.APIError as e:
     print("Error: Could not open the spreadsheet. Reason:", e)
 
 spreadsheet = gc.open_by_key(SHEET_ID)
 worksheet = spreadsheet.worksheet("Sheet1")
 rows = worksheet.get_all_records()
-    
+
+now = datetime.now()
+print("Successfull sycnronized the Code")
+
 def customWeather():
     lng = 0
     lat = 0
