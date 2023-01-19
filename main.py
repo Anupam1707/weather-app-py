@@ -58,9 +58,6 @@ rows = worksheet.get_all_records()
 def customWeather():
     lng = 0
     lat = 0
-    we = None
-    xl = None
-    co = None
     country = "Unknown"
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
@@ -72,19 +69,6 @@ def customWeather():
             country = rows[i].get("Country")
             lat = rows[i].get("Latitude")
             lng = rows[i].get("Longitude")
-    
-    if country == "Unknown":
-        for i in range(0,len(rows)):
-            if rows[i].get("Country") == city_name:
-                co = 1
-            else :
-                xl = 0
-                co = 0
-                
-        if weather_info['cod'] == 200:
-            we = 1
-        else :
-            we = 0
            
     time_url = "https://www.timeapi.io/api/Time/current/coordinate?latitude="+str(lat)+"&longitude="+str(lng)
     weather_url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid='+api_key
@@ -98,7 +82,7 @@ def customWeather():
     inpfield.delete("1.0", "end")   
   
     
-    if we == 1 and co == 0:
+    if weather_info['cod'] == 200:
         kelvin = 273 
         tempc = int(weather_info['main']['temp'] - kelvin)
         tempk = int(weather_info['main']['temp'])
