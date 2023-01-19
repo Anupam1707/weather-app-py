@@ -123,10 +123,9 @@ def customWeather():
     else:
         if co == 1:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
-            inpfield.insert(INSERT, weather) 
         elif we == 0:
             weather = f"Weather for {city_name} not found"
-            inpfield.insert(INSERT, weather) 
+    inpfield.insert(INSERT, weather) 
             
     
 
