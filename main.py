@@ -58,6 +58,8 @@ rows = worksheet.get_all_records()
 def customWeather():
     lng = 0
     lat = 0
+    co = False
+    we = False
     country = "Unknown"
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
@@ -69,20 +71,29 @@ def customWeather():
             country = rows[i].get("Country")
             lat = rows[i].get("Latitude")
             lng = rows[i].get("Longitude")
+            we = True
+            co = False
+    
            
     time_url = "https://www.timeapi.io/api/Time/current/coordinate?latitude="+str(lat)+"&longitude="+str(lng)
     weather_url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid='+api_key
  
     response = requests.get(weather_url)
     responset = requests.get(time_url)
-    
     weather_info = response.json()
     time_info = responset.json()
  
     inpfield.delete("1.0", "end")   
-  
+
+    if country == "Unknown":
+        for i in range(len(rows)):
+            if rows[i].get("Country") == city_name:
+                co = True
+            elif weather_info['cod'] != 200:
+                we = True
+                co = False
     
-    if weather_info['cod'] == 200:
+    if co == False and we == True:
         kelvin = 273 
         tempc = int(weather_info['main']['temp'] - kelvin)
         tempk = int(weather_info['main']['temp'])
@@ -100,15 +111,16 @@ def customWeather():
         if lat == 0 and lng == 0:
             time = "Unable to Fetch Time"
         sunrise_time = time_format_for_location(sunrise + timezone)
-        sunset_time = time_format_for_location(sunset + timezone)\
+        sunset_time = time_format_for_location(sunset + timezone)
          
         weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
-        inpfield.insert(INSERT, weather) 
+
     else:
-        if co == 1:
+        if co == True:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
-        elif we == 0:
+        elif we == False:
             weather = f"Weather for {city_name} not found"
+            
     inpfield.insert(INSERT, weather) 
             
     
@@ -203,7 +215,7 @@ def time():
     
 response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/bg.jpg")
 img = Image.open(BytesIO(response.content))
-img = img.resize((1280,720), Image.ANTIALIAS)
+img = img.resize((1280,720), Image.LANCZOS)
 test = ImageTk.PhotoImage(img)
 bk = Label(image=test)
 bk.image = test
