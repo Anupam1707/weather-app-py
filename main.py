@@ -56,7 +56,7 @@ worksheet = spreadsheet.worksheet("Sheet1")
 rows = worksheet.get_all_records()
 
 now = datetime.now()
-print("Successfull sycnronized the Code")
+print("Successfully sycnronized the Code")
 
 def customWeather():
     lng = 0
