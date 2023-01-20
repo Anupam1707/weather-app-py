@@ -27,6 +27,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 root = Tk()    
 root.geometry("1280x720")
 root.resizable(False, False)
+root.overrideredirect(True)
 root.title("Global Weather Bulletin")
  
 def time_format_for_location(utc_with_tz):
