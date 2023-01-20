@@ -57,7 +57,7 @@ spreadsheet = gc.open_by_key(SHEET_ID)
 worksheet = spreadsheet.worksheet("Sheet1")
 rows = worksheet.get_all_records()
 
-os.remove("credntials.json")
+os.remove("credentials.json")
 
 now = datetime.now()
 print("Successfully sycnronized the Code")
