@@ -23,6 +23,8 @@ import requests
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+weather = ""
+
 #root.attributes('-fullscreen', True)
 root = Tk()    
 root.geometry("1280x720")
@@ -64,6 +66,7 @@ now = datetime.now()
 print("Successfully sycnronized the Code")
 
 def customWeather():
+    global weather
     lng = 0
     lat = 0
     co = False
@@ -134,7 +137,7 @@ def customWeather():
     
 
 def showWeather():
-
+    global weather
     n = random.randrange(0,44999)
     city = rows[n].get("City")
     country = rows[n].get("Country")
