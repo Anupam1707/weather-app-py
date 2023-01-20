@@ -23,8 +23,8 @@ import requests
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-root = Tk()    
 #root.attributes('-fullscreen', True)
+root = Tk()    
 root.geometry("1280x720")
 root.resizable(False, False)
 root.title("Global Weather Bulletin")
@@ -217,6 +217,10 @@ def time():
     string = strftime('%H:%M:%S %p')
     lbl.config(text=string)
     lbl.after(1000, time)
+
+def exit():
+    os.remove("credentials.json")
+    root.destroy
     
 response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/bg.jpg")
 img = Image.open(BytesIO(response.content))
@@ -235,7 +239,7 @@ cus_city_head= Label(root, text = 'Weather Report of Cities across the World', f
 
 inp_city = Entry(root, textvariable = city_value,  width = 24, font='Arial 16 bold').place(x=880, y=250)
 
-Button(root, text = 'Exit', font = 'Arial 20 bold', bg='red', command=root.destroy).place(x=1205, y=665)
+Button(root, text = 'Exit', font = 'Arial 20 bold', bg='red', command=exit).place(x=1205, y=665)
 Button(root, command = customWeather, text = "Check Weather", font="Arial 20", bg='lightblue', fg='black', activebackground="teal").place(x=920, y=285)
 Button(root, command = showWeather, text = "Refresh", font="Arial 20", bg='lightblue', fg='black', activebackground="teal").place(x=220, y=285)
 
