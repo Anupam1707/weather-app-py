@@ -26,7 +26,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 root = Tk()    
 #root.attributes('-fullscreen', True)
 root.geometry("1280x720")
-root.eval('tk::PlaceWindow %s center' % root.winfo_pathname(root.winfo_id()))
 root.resizable(False, False)
 root.title("Global Weather Bulletin")
  
