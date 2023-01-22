@@ -14,6 +14,7 @@ try:
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Installing Libraries")
+    print()
     os.system("pip install datetime pillow requests gspread oauth2client")
 
 from datetime import datetime
@@ -52,6 +53,7 @@ SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
 try:
     spreadsheet = gc.open_by_key(SHEET_ID)
     print("Successfully syncronized the spreadsheet.")
+    print()
 except gspread.exceptions.APIError as e:
     print("Error: Could not open the spreadsheet. Reason:", e)
 
@@ -63,6 +65,7 @@ os.remove("credentials.json")
 
 now = datetime.now()
 print("Successfully sycnronized the Code")
+print()
 
 def customWeather():
     global weather
