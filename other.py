@@ -127,7 +127,7 @@ def customWeather():
         sunrise_time = time_format_for_location(sunrise + timezone)
         sunset_time = time_format_for_location(sunset + timezone)
          
-        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nWind Speed: {wind_speed}m/s\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
+        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nWind Speed: {wind_speed} m/s\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
     
     else:
         if co == True:
@@ -251,9 +251,9 @@ Button(root, command = showWeather, text = "Refresh", font="Arial 20", bg='light
 RepeatedTimer(7, showWeather)
 RepeatedTimer(60, date)
 
-inpfield = Text(root, width=36, height=10, font="Arial 19",bg="BlanchedAlmond")
-inpfield.place(x=740, y=350)
-autofield = Text(root, width=36, height=10, font="Arial 19",bg="BlanchedAlmond")
+inpfield = Text(root, width=36, height=11, font="Arial 19",bg="BlanchedAlmond")
+inpfield.place(x=770, y=350)
+autofield = Text(root, width=36, height=11, font="Arial 19",bg="BlanchedAlmond")
 autofield.place(x=0, y=350)
 dtfield = Text(root, width = 20, height = 1, font="Arial 20",bg = "BlanchedAlmond")
 dtfield.pack(pady=0)
