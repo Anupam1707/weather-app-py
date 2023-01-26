@@ -120,14 +120,15 @@ def customWeather():
         cloudy = weather_info['clouds']['all']
         description = weather_info['weather'][0]['description']
         time = time_info.get("time")
+        wind_speed = weather_info['wind']['speed']
 
         if lat == 0 and lng == 0:
             time = "Unable to Fetch Time"
         sunrise_time = time_format_for_location(sunrise + timezone)
         sunset_time = time_format_for_location(sunset + timezone)
          
-        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
-
+        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nWind Speed: {wind_speed}m/s\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
+    
     else:
         if co == True:
             weather = f"You have given a name of a Country.\nPlease enter a name of a City"
@@ -175,12 +176,12 @@ def showWeather():
         cloudy = weather_info['clouds']['all']
         description = weather_info['weather'][0]['description']
         time = time_info.get("time")
+        wind_speed = weather_info['wind']['speed']
  
         sunrise_time = time_format_for_location(sunrise + timezone)
         sunset_time = time_format_for_location(sunset + timezone)\
          
-        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
- 
+        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nWind Speed: {wind_speed}m/s\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}" 
     autofield.insert(INSERT, weather) 
 
 class RepeatedTimer(object):
