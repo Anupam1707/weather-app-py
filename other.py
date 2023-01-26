@@ -251,9 +251,9 @@ Button(root, command = showWeather, text = "Refresh", font="Arial 20", bg='light
 RepeatedTimer(7, showWeather)
 RepeatedTimer(60, date)
 
-inpfield = Text(root, width=36, height=9, font="Arial 19",bg="BlanchedAlmond")
+inpfield = Text(root, width=36, height=10, font="Arial 19",bg="BlanchedAlmond")
 inpfield.place(x=740, y=350)
-autofield = Text(root, width=36, height=9, font="Arial 19",bg="BlanchedAlmond")
+autofield = Text(root, width=36, height=10, font="Arial 19",bg="BlanchedAlmond")
 autofield.place(x=0, y=350)
 dtfield = Text(root, width = 20, height = 1, font="Arial 20",bg = "BlanchedAlmond")
 dtfield.pack(pady=0)
