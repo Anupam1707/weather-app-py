@@ -118,13 +118,14 @@ def customWeather():
         cloudy = weather_info['clouds']['all']
         description = weather_info['weather'][0]['description']
         time = time_info.get("time")
+        wind_speed = weather_info['wind']['speed']
 
         if lat == 0 and lng == 0:
             time = "Unable to Fetch Time"
         sunrise_time = time_format_for_location(sunrise + timezone)
         sunset_time = time_format_for_location(sunset + timezone)
          
-        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWeather Info: {description}"
+        weather = f"Weather of: {city_name}, {country}\nTime : {time}\nTemperature (Celsius): {tempc}°C\nTemperature (Kelvin): {tempk}K\nTemperature (Farenheit) :{tempf}°F\nPressure: {pressure} hPa\nHumidity: {humidity}%\nSunrise at {sunrise_time} and Sunset at {sunset_time}\nCloud: {cloudy}%\nWind Speed: {wind_speed}m/s\nWeather Info: {description}"
 
     else:
         if co == True:
@@ -248,7 +249,7 @@ Button(root, command = showWeather, text = "Refresh", font="Arial 20", bg='light
 RepeatedTimer(7, showWeather)
 RepeatedTimer(60, date)
 
-inpfield = Text(root, width=36, height=9, font="Arial 20",bg="BlanchedAlmond")
+inpfield = Text(root, width=36, height=10, font="Arial 20",bg="BlanchedAlmond")
 inpfield.place(x=740, y=350)
 autofield = Text(root, width=36, height=9, font="Arial 20",bg="BlanchedAlmond")
 autofield.place(x=0, y=350)
