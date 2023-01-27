@@ -72,7 +72,7 @@ def customWeather():
     lng = 0
     lat = 0
     co = False
-    we = False
+    we = True
     country = "Unknown"
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
@@ -103,9 +103,6 @@ def customWeather():
             if rows[i].get("Country") == city_name:
                 co = True
                 we = False
-            elif weather_info['cod'] == 200:
-                we = True
-                co = False
     
     if co == False and we == True:
         kelvin = 273 
