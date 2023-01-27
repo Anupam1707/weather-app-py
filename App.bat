@@ -11,7 +11,7 @@ except ImportError:
 import requests
 
 print("Select from the below option :- ")
-print("For Fullscreen : Press f or F")
+print("For Fullscreen (1280x720) : Press f or F")
 print("For Windowed   : Press w or W")
 
 st = str(input())
