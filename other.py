@@ -102,6 +102,7 @@ def customWeather():
         for i in range(len(rows)):
             if rows[i].get("Country") == city_name:
                 co = True
+                we = False
             elif weather_info['cod'] == 200:
                 we = True
                 co = False
