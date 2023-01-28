@@ -28,9 +28,7 @@ weather = ""
 
 #root.attributes('-fullscreen', True)
 root = Tk()    
-root.geometry("1280x720")
-root.resizable(False, False)
-root.title("Global Weather Bulletin")
+
  
 def time_format_for_location(utc_with_tz):
     local_time = datetime.utcfromtimestamp(utc_with_tz)
@@ -234,7 +232,10 @@ bk.image = test
 bk.place(x=0, y=0)  
 
 #Display
- 
+root.geometry("1280x720")
+root.resizable(False, False)
+root.title("Global Weather Bulletin")
+
 title = Label(root, text= 'Global Weather Bulletin', font= 'Arial 40 bold', bg='yellow').pack(pady=0)
 name = Label(root, text= 'Programmed by Anupam Kanoongo', font= 'Arial 30 bold').place(x=1, y=665)
 city_head= Label(root, text = 'City of your choice :-', font = 'Arial 20 bold', bg='lightblue').place(x=885, y=210)
