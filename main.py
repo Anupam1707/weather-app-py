@@ -25,6 +25,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 weather = ""
+
+root = Tk()    
  
 def time_format_for_location(utc_with_tz):
     local_time = datetime.utcfromtimestamp(utc_with_tz)
@@ -227,7 +229,6 @@ bk.image = test
 bk.place(x=0, y=0)  
 
 #Display
-root = Tk()    
 root.attributes('-fullscreen', True)
 root.title("Global Weather Bulletin") 
 
