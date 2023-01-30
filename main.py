@@ -220,7 +220,7 @@ def time():
     lbl.config(text=string)
     lbl.after(1000, time)
     
-response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/nw.jpg")
+response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/bg.jpg")
 img = Image.open(BytesIO(response.content))
 img = img.resize((1280,720), Image.LANCZOS)
 test = ImageTk.PhotoImage(img)
