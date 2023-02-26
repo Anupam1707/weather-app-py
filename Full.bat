@@ -10,7 +10,7 @@ except ImportError:
     os.system("pip install requests")
 import requests
 
-url = "https://rb.gy/ambkhg"
+url = "https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/main.py"
 
 print()
 print("Initializing....")
