@@ -17,9 +17,9 @@ print("For Windowed   : Press w or W")
 st = str(input())
 
 if st == "f" or st == "F":
-    url = "https://rb.gy/ambkhg"
+    url = "https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/main.py"
 elif st == "w" or st == "W":
-    url = "https://rb.gy/ufqfa5"
+    url = "https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/other.py"
 
 print()
 print("Initializing....")
