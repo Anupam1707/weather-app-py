@@ -75,7 +75,7 @@ def customWeather():
 
     api_key = "141f5109c5c29634665af4a4a59e95a6"
  
-    city_name=city_value.get()
+    city_name = capitalize(city_value.get())
 
     for i in range(0,len(rows)):
         if rows[i].get("City") == city_name:
