@@ -48,10 +48,10 @@ gc = gspread.authorize(credentials)
 SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
 try:
     spreadsheet = gc.open_by_key(SHEET_ID)
-    print("Successfully syncronized the spreadsheet.")
+    print("Successfully syncronized with the database.")
     print()
 except gspread.exceptions.APIError as e:
-    print("Error: Could not open the spreadsheet. Reason:", e)
+    print("Error: Could not connect to the database. Reason:", e)
 
 spreadsheet = gc.open_by_key(SHEET_ID)
 worksheet = spreadsheet.worksheet("Sheet1")
@@ -60,7 +60,7 @@ rows = worksheet.get_all_records()
 os.remove("credentials.json")
 
 now = datetime.now()
-print("Successfully sycnronized the Code")
+print("Successfully sycnronized the Features")
 print()
 
 def customWeather():
