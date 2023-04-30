@@ -50,7 +50,6 @@ cred = {
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/weather-google-sheet%40weather-app-374917.iam.gserviceaccount.com"
 }
-page = requests.get(url)
 with open("credentials.json","+w") as f:
           f.write(cred)
           f.close()
