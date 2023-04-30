@@ -40,7 +40,7 @@ city_value = StringVar()
 
 scope = ['https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/drive']
-cred = {
+cred = "{
   "type": "service_account",
   "project_id": "weather-app-374917",
   "private_key_id": "66255cbe97d7d877819ad399b53f0478bcea6e99",
@@ -51,7 +51,7 @@ cred = {
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/weather-google-sheet%40weather-app-374917.iam.gserviceaccount.com"
-}
+}"
 with open("credentials.json","+w") as f:
           f.write(cred)
           f.close()
