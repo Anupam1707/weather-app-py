@@ -40,10 +40,20 @@ city_value = StringVar()
 
 scope = ['https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/drive']
-url = 'https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/credentials.json'
-page = requests.get(url)
+cred = {
+  "type": "service_account",
+  "project_id": "weather-app-374917",
+  "private_key_id": "66255cbe97d7d877819ad399b53f0478bcea6e99",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCsC231veJ0YMl\n7vUu+gbg98QMfNqa6sfNtlhapD9PaCLQBbYGBTdwvCuh2M3JJd3BAhZwbct5nhec\ncZOtQLyrlFFOjK8hAHpnrOy5DGT2Y9a3W57O6XhTvB6UVZoeEB1hf7/1BlxCf/xw\nXv52X0DHiqYM8nPJIaLgx/8UiuSL/5uMHLluOWk7T4MSfFUNHRdP5UbWX0ohlboc\n53Nt8AM+ZmSjpX6pvGp09k+597XysXS6r/MEj/uftSaOZLqwGkroF8ysdrWRcKl7\n3Uj+hrKZGjlz3H5iEtWZl9KR3feL4q3iYLhmtA07/T4xOk+k7zfzJ0E+CAuboAmP\nJAI3EE5zAgMBAAECggEAQQOviMR3TqVSHBFT/HePY4IqDJeHMxOzXI2HrOFLqRtY\nAMrfcdw9Gt8j3Pz3H7SO/LzTPIFV4Uu7i8lb7RAA0XWKv2X4t9ceiU+0j8lFUAig\nNAQbIPLTdXcNaTC68k4kWaJdOpiAp85wwR/f7yy5B8nT0OAIbYLXjyQKmVQWpW9F\ntSzzN/YqcxbBZF3klVec8cHEQ4gDHBXphFt4ABfAN6mCVKmKDLsAnHNVu+Wj4JN3\n7JJHUfR41TE3+cRThyfiMiiTs9avbd3Y4hh7YvVyJdmSoojy4KVWPbSnrBrrOBKj\nJMDntwtUp8h7HmtiagInrefWQZ80UBmNy85RMeUtsQKBgQDrR3k9e3dacdCG45U8\n67/g4MhMq/eTVhDPNCs29CnGGEr/mzPUG9/O4kX9pxq6nrCeFCEG9rq57QIunjW/\nUM+DTU0SG3f6Jc6ZaVdygvXD2WjOWU1/OB4lKwL1lVlNBdczo3rAzmPSZ14ienCj\nSNlrOwBx5Y4IJdtDXWyn6JSIEQKBgQDT1Y3MeR6o9yjgRayFWb+VRVz++D/+kXEw\nYzkfnixaJzcxeDNzs98PZNATkpY9Tcy4rouN9uuqSXnX0tfi+9NdQjkZiAxHvW27\ndIYc6BhZr/goWifPfxv2yNaw3gFBaAyHGiybcFfoHjaPODe9jNCns+TD8ncmARiX\njZdEaCeSQwKBgBEHCDA56kZibEwG1nslOKrGudhKrc088lR8mxAMFaXfhjX/fn3A\nUq8/Uv9rg5Sz/WZDYKyHWLYx//Ftw8gHyizfgE9qK4GwEMariAeikLTO3DXq4p/t\naMkZ1sn9OAxJ+uwizbR8e17z2i02nUZD9HA9Qef8TA4s5zR143I3c+BxAoGAJkh9\n6+onxFmGpaFx4Fer7AoxGFM9HYCjeB82f6RSV6imrOYQRmTHdzy87gyb4lBhIy9I\nQUvSo1/MCVktcvQX6s7BCwAvV/fAERSp+Cdp3yuSKZjBgRpzr1H0mtpEV9G6EeCF\nF0JiYKy1J4T9beA5BVXZjiAPsGqaSylnoRFBtYkCgYBvM2JYB/STK6RspSwVkxk/\ngpFqSt/CeDvKsEsjjfgBTkvTNII4HsfwUv00ngdLH/mfbiQzI4tehq2I/m+sSdRc\nx1HJQ514ot9gDndEuzVbE5TzRrJT0D9ZVkwXb6kkpU9BcXM/P2W6BT+V9UsL9p30\nBw9wDdG9HFNLEepgGQ8ijQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "weather-google-sheet@weather-app-374917.iam.gserviceaccount.com",
+  "client_id": "111575310769961538804",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/weather-google-sheet%40weather-app-374917.iam.gserviceaccount.com"
+}
 with open("credentials.json","+w") as f:
-          f.write(page.text)
+          f.write(cred)
           f.close()
 credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 gc = gspread.authorize(credentials)
