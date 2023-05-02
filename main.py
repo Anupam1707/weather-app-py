@@ -36,24 +36,23 @@ def time_format_for_location(utc_with_tz):
 city_value = StringVar()
 
 
+def decrypt(encrypt_text):
+    orig_text = []
+    b = int(len(encrypt_text)/2)
+    key = encrypt_text[b:]
+    encrypt_text = encrypt_text[:b-1]
+    for i in range(len(encrypt_text)):
+        x = (ord(encrypt_text[i]) -ord(key[i]))
+        orig_text.append(chr(x))
+    orig_text = ("" . join(orig_text))
+    return orig_text
+
 scope = ['https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/drive']
-cred = "{
-  "type": "service_account",
-  "project_id": "weather-app-374917",
-  "private_key_id": "66255cbe97d7d877819ad399b53f0478bcea6e99",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCsC231veJ0YMl\n7vUu+gbg98QMfNqa6sfNtlhapD9PaCLQBbYGBTdwvCuh2M3JJd3BAhZwbct5nhec\ncZOtQLyrlFFOjK8hAHpnrOy5DGT2Y9a3W57O6XhTvB6UVZoeEB1hf7/1BlxCf/xw\nXv52X0DHiqYM8nPJIaLgx/8UiuSL/5uMHLluOWk7T4MSfFUNHRdP5UbWX0ohlboc\n53Nt8AM+ZmSjpX6pvGp09k+597XysXS6r/MEj/uftSaOZLqwGkroF8ysdrWRcKl7\n3Uj+hrKZGjlz3H5iEtWZl9KR3feL4q3iYLhmtA07/T4xOk+k7zfzJ0E+CAuboAmP\nJAI3EE5zAgMBAAECggEAQQOviMR3TqVSHBFT/HePY4IqDJeHMxOzXI2HrOFLqRtY\nAMrfcdw9Gt8j3Pz3H7SO/LzTPIFV4Uu7i8lb7RAA0XWKv2X4t9ceiU+0j8lFUAig\nNAQbIPLTdXcNaTC68k4kWaJdOpiAp85wwR/f7yy5B8nT0OAIbYLXjyQKmVQWpW9F\ntSzzN/YqcxbBZF3klVec8cHEQ4gDHBXphFt4ABfAN6mCVKmKDLsAnHNVu+Wj4JN3\n7JJHUfR41TE3+cRThyfiMiiTs9avbd3Y4hh7YvVyJdmSoojy4KVWPbSnrBrrOBKj\nJMDntwtUp8h7HmtiagInrefWQZ80UBmNy85RMeUtsQKBgQDrR3k9e3dacdCG45U8\n67/g4MhMq/eTVhDPNCs29CnGGEr/mzPUG9/O4kX9pxq6nrCeFCEG9rq57QIunjW/\nUM+DTU0SG3f6Jc6ZaVdygvXD2WjOWU1/OB4lKwL1lVlNBdczo3rAzmPSZ14ienCj\nSNlrOwBx5Y4IJdtDXWyn6JSIEQKBgQDT1Y3MeR6o9yjgRayFWb+VRVz++D/+kXEw\nYzkfnixaJzcxeDNzs98PZNATkpY9Tcy4rouN9uuqSXnX0tfi+9NdQjkZiAxHvW27\ndIYc6BhZr/goWifPfxv2yNaw3gFBaAyHGiybcFfoHjaPODe9jNCns+TD8ncmARiX\njZdEaCeSQwKBgBEHCDA56kZibEwG1nslOKrGudhKrc088lR8mxAMFaXfhjX/fn3A\nUq8/Uv9rg5Sz/WZDYKyHWLYx//Ftw8gHyizfgE9qK4GwEMariAeikLTO3DXq4p/t\naMkZ1sn9OAxJ+uwizbR8e17z2i02nUZD9HA9Qef8TA4s5zR143I3c+BxAoGAJkh9\n6+onxFmGpaFx4Fer7AoxGFM9HYCjeB82f6RSV6imrOYQRmTHdzy87gyb4lBhIy9I\nQUvSo1/MCVktcvQX6s7BCwAvV/fAERSp+Cdp3yuSKZjBgRpzr1H0mtpEV9G6EeCF\nF0JiYKy1J4T9beA5BVXZjiAPsGqaSylnoRFBtYkCgYBvM2JYB/STK6RspSwVkxk/\ngpFqSt/CeDvKsEsjjfgBTkvTNII4HsfwUv00ngdLH/mfbiQzI4tehq2I/m+sSdRc\nx1HJQ514ot9gDndEuzVbE5TzRrJT0D9ZVkwXb6kkpU9BcXM/P2W6BT+V9UsL9p30\nBw9wDdG9HFNLEepgGQ8ijQ==\n-----END PRIVATE KEY-----\n",
-  "client_email": "weather-google-sheet@weather-app-374917.iam.gserviceaccount.com",
-  "client_id": "111575310769961538804",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/weather-google-sheet%40weather-app-374917.iam.gserviceaccount.com"
-}"
-with open("credentials.json","+w") as f:
-          f.write(cred)
-          f.close()
-credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+creds = {'type': 'ÙÌÚäÌËÌÍÈËÍÑÙæÚ\x99fghnchgnghjbdxfy', 'project_id': 'ÝÌÉâËÍÙ\x9bÈØÚ\x8f\x97¯\x9a²\x99¡\x84fghnchgnghjbdxfyhjd', 'private_key_id': '\x9c\x9d\x9a£\x98ËÉÓ\xa0\x9fÎ\x99È°\x9d°\xa0\x9b\x9dÏÌ§£²Í\x9c\xa0Ì\x97\x9c¥\x9bÊÊÓÈ\x9eÏ\x9b\x9d\x98fghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdx', 'private_key': '\x93\x94\x95\x9b\x90ª¬µ°¶\x8a²¶Á¼º¼¯\x84¹\xadÍ\x97¦\x98\x94\x9ap´±·¨Þ¨·©©®£²ºÍäÙÒÏ×¯\xadá©\xad¨¾«\xad©¯¶«©¹ÀßÑÉ·á§à\xad«¥Ý±¶«Ê¯ªà©\x99\x9b\x9fÙÍ±\x9eÀµÖl\x9bî»î\x93ÑÆÕ¡¬»ÆÑµÞÇ\x9dÛÔ±ÜÓÖÈØ®\x9b´Ù©Å¹¬ÆÇ¯¶¾ÝâÝ°ÛÏ\x9a»\x96²±Ò\x9aª«Ê¾ïÈÜÜ\x9fÒÖÍ×tÜÅ¶á·³áàÏ®\xad½Ñ³¢Ê¥ÀÖçÚ¹Ý£¬»¾«Ä\xa0Î\x99¾\x9d¥²\x9e¿Ö»Þ¬\x98¹ÎÀèÍ¯¦\x9fÐÚ¡¨\x9c©ÙÞªÎ\x9dÛßqÆÝ\x9d\x9cº\x94¼®âÙÃ±¦ÖÄ´ÂÌ³ÔÞ\x96\xa0ÃÌÝºº\x96\x9dß¯¬ÄÒî·ÁÏ¥¼¨·ÌÑ\xadÂ´¯ºÒ³\x9d¼Ð¾À\x9aÑÌäÈèËt\x99¡¶è¢º¸\x92ÇÓºÒÞ»\x9e×ä®Ø\x9a\x9bÏ£\x9b²\x9fÂÝáÀÇ\xa0ë\x9a´²Ð\x96ÝÔ×»È½Á´ÛÙ«ãØè®¢ÝáÌæÁËÎ²Ù\x9dq\x9bÃÍ\x93Ïà²Â±ÌÐò\x99Á\x9dÓ©â¿ÎÖ²¶¹\xa0ÌÌ´¢Ô\x9bÐÇ³Ð×Ö¥¨\x9d¨¼\x9eÜ½Ó\x9fÕ°åÍç°\x97\xad\x99¦©ÜÐÖ©×²nÂ§Â\x9b¯©£âµÑÆ\xad¨®«ªÏÕ¨©¸¿¶ÞÓ¯¶«ºê¾½¬°®È\x99ÁÐ·Æ\x9a°Ù²\xadÍ¯»ß·äº\xadª®ë·°°ßºèÃ\x83¬´ßÌÊÌå\x9c¯Û¦Ñ\x9bºÜ\x97À\x9dÌ·\x99°è¼Ä³¿Á\x9bÂÛ\x9eÑ¦ÏÊ\x9eÀ¨©\x9aº»ÃÜ«À\x9eØ§ËÙÓÎ\x96\x97×\x9eÓ®Ã¤ÑÎxµ©»Ä\xadÈ²ÍÌÂÇ¼ÉÈ\xad¯£Ò¡Ñ¾É¸Ç·××¨Ø¢\x97Ûï¸¨Î¡Ýç\x9d¶¢ç¿\x97¼§°ÊÇ¯ÀÑç¸³×¸µÏÖÐ¡°nâ»îäÇ\x9aÀÞÉßÊ°½®\x9aÙÓ¾ÏÅ\x9cÛ®¾¹\x9eË²°¶ÂéÓ\xadá\x9a¨ªÔ¤¶\x9dÛª¾µÏ¯¼²ì©Ø¬¼¾é\x95ÐÕ\x9b·´\x9ar¥\xad²¯ÃÍº\x9e\x93¸½\x99¤Ë¼¸ÖáÚÓÆÔÐÁÙ\xa0ÉäÅÌ\x9aÇ\x9bÐÒ\x99½î¼ò²ÎÑÁ×ãÔò\x9f²Ã½·ÊÁÑÚ©àÙ·¬\xadÎ\x82°Æ¬ØØåÜÉÚ±Ó\x9eµÓÛÑÏÊ±ÕàÌÎÁ³¾°\x96Îª×²ç\xa0©¼ÆÐ¼áÙ¸³°Ê¹«à¹\x9bÕ\x9bÉ«ÊÚËÎ§µ\x9c©¿±u\x9d¤\x95Î\x9c»ËµØ\x9dÌ¼ÀÊ¨È´¼Û\x9c\x9d±Ö»±¾Ý\x96Úà·½µ\x9c\x97¶¢ÒÀ£ÒÜé\x9cçÚ\xadÉ´«¹±²ÝØ¢\x9d¸±ãÑÒ¾\x9dq½·\x8d¨Ì»©»±\x97Ô\x9e¾Í¯ÅÈÃÊàÏä»¬\x99ÅÑ·Á·\x95§µ»\x9cÖ¯å´¥ÖÏ×µ¯ÊÊâÝ\x96Ú¨èÔ¸½¼\x95¬ÏÞÖ\xadÎx»ÂÖëºÞ¯Þ\x9cÁ¢¬²Ëâ«ÀÁÛÒ®°Ì±¯µ¹ªÛ»½¿\x98Æ\x99´ÍÀ\x99×\xa0çÑÏ¼ÃÝ¾½Û\x93À¶Äâ\x9f\x95½\x9a\x92Ø¾¬ßx¼âÒÔÕÑâÃ®òÉñÍ®²èÛ\xad¢ÉÅµ®ºÒØÇ\x9c¼Êç\x9bÚÙ×²±ÛîÙ½¼ÜÀ¤ÞßÔ\x92¦´Ë¹ØÎÂÐ¯ß°à¹\x96¯pÝ±ÃÇ¤ªÜÄë\x9aÎÜ½ÐÎ¾ÉàÝ\xa0à¶ËÙ\x97ß¬»É«Ý¶¯ÝãÛÎ\xadÓÕ¯ÒÏ³·«Ó\xa0Ò¸¥Òë\x91Í¬¢ÒÑÕµ¼âÃq×ÀË\xadÏ¦Íº¿Þ³¬É¦½®¼¬«\x99¤ÓÎÓÛ°Þ´\x97ÕÛÚ²³ÙµÜÌÒ\xadÖÛ\x96±\xa0Ö¶¦Õì«Æ±ÈÅÌÏÒÆ\x92ÎÕ¡¨r¿Ó\x9c§»ï¡ÜË£»î\x99ÐÅ«Æ±à°Å¯Áß\x9d\x96®ÞÙ\x9cß®òÑäÊÕ\xad\xadÛÄ\x9f®ä«´ÉàÌ©Ì×Ò´¾±\x97¼¾ê\x9cÚ\x93ârÕ·äÅ\x98àÔ\xa0·¯Û²\x92ãÞÑäÄ¶°Ëª\x9fä\x96×\x98¦ØÎÅ«¦®¨¡¿ÈÎ\x9fÂ¨\x9cÝ\x97ÞÊ\x97\xad\x9b³\x97Ñ\x93¶âºÚ®®°ÒÐ§m\x9e\x92ÝÕà°Ï«èÇ¿à\x9eªÓÚ««èã®³³\xa0°Ç¦ÒÌ°\x9f\x9aÐ\x98¶Ë¼¯Ñ×Ö½ÁÅ¼æ¿¯Ñàà\xa0¥ÊáÉ¢ÓªÒ«Ý±¯\x83¹¿ÚÁ×¥\x99Æ®½ØÚÊÞ¿»\x9eÚ¥©«á£ÚÎ\x95ß©¯¶ÁØ\x9f\xadÝÛ\x9aæÛº³ÈÍªÎÀ×âÜ\x93¬¨ÓíØ¯º§¯ª¯Þ®\xadw¬\x97²×¼³à\x9f±\x9c¾\x9bÆÝ§®ªÀ¼ÈÒÝ«ÉÞ®ÞÇºáÚÑ×¹´©ÜÃÍ§ß¿»Þ·\x96¸Á¶\x99Ì¿²£¸ÚØÁÚ¾ÒæÒ\x97tÉÔ¾×ÌÜ\x99§Ó¬êµì°Ú×ÐÍÏ°·ÓÝÂµ±³\x96¬ëÌð½à\x94\x9eÖÛÎÅ³\x96ÚÌÉÑ¿Ý±\x9bâÌÐÛ\x94\xad§Ó¤Û½ÈÀË~âª³±¾\x9b\x98\x9cÝ×¡Î²ÕÌ¯×ÞÎÈ¾\x9d¾ÞÀÚ¾¾©¯\xa0Ç¼ÒßÆÅ\x9eÒÙ×½£¤ÇÐ³¨¸\x9c»¤ªÈ\x95Ï¤¼à²\xa0Ø¡\x93r©å\xa0ß®Æ«±®¿¶¶©ÓØÛ±Ê£Ð×·¤¥x\x90\x95\x94\x9b\x94\xad¸¦\x84È¸Â¾«¸³\x88¿¯Ò\x98\x94\x9a\x93\x94r\x8efghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghn', 'client_email': 'ÝÌÉâËÍÙ\x9bÎ×ÙÉÐÝ\x93ìÐÏÉâ¨ëÏÚßÏÒØ\x94ÉÞÓ\x95\x9a¥\x9b¡\x9b\x99\x92áÇæ\x96Ñ×ÓÚêÓÜÐÈÐÉÖÝÜ×\x96ÊÝÔ\x88fghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgngh', 'client_id': '\x97\x98\x99£\x9a\x9d\x9a\x9f\x97\x9f\xa0\x9b\x9d®\x97®\x9b¢\x9c\x9e\x9c\x94fghnchgnghjbdxfyhjdnht', 'auth_uri': 'ÎÛÜÞÖ¢\x96\x9dÈËÍÑÙæÚì\x96ÑÓÝÏàÏ§ÎÖÚ\x95Ö\x97ÝÄÝÛÖ\x99\x97Ë×Øà\x86fghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxf', 'token_uri': 'ÎÛÜÞÖ¢\x96\x9dÖÉßÖÌª\x94à×ÙËÚÍÕÚâÞ\x95ÐÕÔ\x97âÒÓÌÜ\x87fghnchgnghjbdxfyhjdnhtjykgmfghnchgng', 'auth_provider_x509_cert_url': 'ÎÛÜÞÖ¢\x96\x9dÞßá\x90ËçÕàÔÏÅÞÑç\x98ÜÚÔ\x9cÕÈÝâË\x9a\x96ä\x98\x97ÍÇÖìÙ\x99fghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfy', 'client_x509_cert_url': 'ÎÛÜÞÖ¢\x96\x9dÞßá\x90ËçÕàÔÏÅÞÑç\x98ÜÚÔ\x9cØÖÊÝ×\x97Ý\x9f\x96ÕÏÖÅÜÇíÉ\x99Ü£\x98\xad\x99ðÐÈáÎÌÚ\x9bÊ×ÖÕÓÍ\x97ÕÌÝËí\x8d\x9e\x94åÍÕÞáÐÙ\x9aÇ×Ø\x9b\x96\x9f\x9b§\x98\x9f\x98ËÅå\x94àÛÏÖäÑ×ÏÚÎÊÜÛÕÜ\x9cÆ×Ô\x8efghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgnghjbdxfyhjdnhtjykgmfghnchgn'}
+for i in range(len(creds)):
+    creds[list(creds.keys())[i]] = decrypt(list(creds.values())[i])
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds, scope)
 gc = gspread.authorize(credentials)
 SHEET_ID = '1iGbUayAGHMfJncrIVTRr_ac6GlJPx0BJDpvZEZPpTOE'
 try:
@@ -66,8 +65,6 @@ except gspread.exceptions.APIError as e:
 spreadsheet = gc.open_by_key(SHEET_ID)
 worksheet = spreadsheet.worksheet("Sheet1")
 rows = worksheet.get_all_records()
-
-os.remove("credentials.json")
 
 now = datetime.now()
 print("Successfully sycnronized the Features")
