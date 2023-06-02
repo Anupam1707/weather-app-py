@@ -242,13 +242,13 @@ root.attributes('-fullscreen', True)
 root.title("Global Weather Bulletin") 
 
 title = Label(root, text= 'Global Weather Bulletin', font= 'Arial 40 bold', bg='yellow').pack(pady=0)
-name = Label(root, text= 'Programmed by Anupam Kanoongo', font= 'Arial 30 bold').place(x=1, y=665)
+name = Label(root, text= 'Programmed by Anupam Kanoongo', font= 'Arial 30 bold').pack(side = "LEFT", anchor = "sw")
 city_head= Label(root, text = 'City of your choice :-', font = 'Arial 20 bold', bg='lightblue').place(x=885, y=210)
 cus_city_head= Label(root, text = 'Weather Report of Cities across the World', font = 'Arial 20 bold', bg='lightblue').place(x=0, y=210)
 
 inp_city = Entry(root, textvariable = city_value,  width = 24, font='Arial 16 bold').place(x=880, y=250)
 
-Button(root, text = 'Exit', font = 'Arial 20 bold', bg='red', command=root.destroy).place(x=1205, y=665)
+Button(root, text = 'Exit', font = 'Arial 20 bold', bg='red', command=root.destroy).pack(side = "RIGHT", anchor = "se")
 Button(root, command = customWeather, text = "Check Weather", font="Arial 20", bg='lightblue', fg='black', activebackground="teal").place(x=920, y=285)
 Button(root, command = showWeather, text = "Refresh", font="Arial 20", bg='lightblue', fg='black', activebackground="teal").place(x=220, y=285)
 
