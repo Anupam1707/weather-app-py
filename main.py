@@ -26,7 +26,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 weather = ""
 
-root = Tk()    
+root = Tk() 
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
  
 def time_format_for_location(utc_with_tz):
     local_time = datetime.utcfromtimestamp(utc_with_tz)
@@ -229,7 +231,7 @@ def time():
     
 response = requests.get("https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/bg.jpg")
 img = Image.open(BytesIO(response.content))
-img = img.resize((1280,720), Image.LANCZOS)
+img = img.resize((width,height), Image.LANCZOS)
 test = ImageTk.PhotoImage(img)
 bk = Label(image=test)
 bk.image = test
