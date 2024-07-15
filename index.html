@@ -1,84 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-    <style>
-        h1 {
-  text-align: center;
-  }
-        h2 {
-  text-align: center;
-  }
-        button {
-    background-color: red;
-    color: white;
-    font-family: Arial;
-    border: 2px solid black;
-    padding: 10px 20px;
-    font-size: 25px;
-    margin: auto;
-    display: block;
-    margin: 0 auto;
-}
-    button:hover {
-    background-color: blue;
-}
-
-    </style>
-
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Bulletin App</title>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/weather.ico">
-  </head>
-  <body style="background-color:powderblue;" oncontextmenu=" return disableRightClick();">
-    
-    <h1>Welcome to the Weather Bulletin App</h1>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    <h2>A weather bulletin is a report that provides information about current or forecasted weather conditions.It can include information such as temperature, precipitation, wind speed and direction, and weather warnings or alerts. Weather bulletins are typically issued by meteorological organizations and are used by the general public, as well as by industries that are affected by weather conditions, such as agriculture, aviation, and shipping. It's important to check weather bulletin regularly especially if you are planning to travel, work or engage in outdoor activities. It can help to prepare for potential weather hazards and make informed decisions about your plans.
-    </h2>
+        header {
+            text-align: center;
+            padding: 40px;
+            background: #064d8f;
+            color: #fff;
+            width: 100%;
+        }
 
-    
-    <h2>This Weather App can used on laptops and desktops as well as public displays.</h2>
+        header h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+            font-weight: 700;
+        }
 
-    <img src="https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/web.png" alt="Sample Weather Screenshot"
-    style="width:640px; height:360px; display:block; margin:auto;">
-      
-    <h2>This App has a link to the data of 45000+ cities without any delay.</h2>
+        header h2 {
+            font-size: 1.5em;
+            margin: 0;
+            font-weight: 300;
+        }
 
-    <h2>This App shows:
-        Name of City, Country Associated,
-        Exact Local time,
-        Temperatures in (Celsius, Farenheit and Kelvin),
-        Air Pressure,
-        Humidity,
-        Sunrise and Sunset Timings,
-        Cloud Percentage,
-        Wind Speed.
-        Weather Status
-    </h2>
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            margin: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    <h2>You can easily get access to this data by downloading this lightweight app below</h2>
-    <h2>Below are some versions of our App</h2>
-    <h2>You can use any of these upon your convenience</h2>
-    <h2>Requirements : Windows 10 or above, Python IDLE (pre-installed)</h2>
-      
-      <button onclick="Python()">Python Installer (Python.org)</button>
-      <button onclick="Full()">Fullscreen App</button>
-      <button onclick="Win()">Windowed App</button>
+        .content p, .content ul {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            font-weight: 400;
+            font-size: 20px;
+            color: #004d40;
+        }
 
+        .screenshot {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .buttons button {
+            background-color: #064d8f;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons button:hover {
+            background-color: #064d8f;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background: #064d8f;
+            color: #ffffff;
+            width: 100%;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
     <script>
-    function disableRightClick() { 
-    alert("Sorry, right click is not allowed !!"); 
-    return false; 
-} 
-    function Full() {
-  location.replace("https://github.com/Anupam1707/weather-app-py/releases/download/app_v2/Fullscreen.Weather.exe")
-}
-    function Win() {
-  location.replace("https://github.com/Anupam1707/weather-app-py/releases/download/app_v2/Windowed.Weather.exe")
-}
-    function Python() {
-  window.open("https://www.python.org/downloads/", "_blank");
-}
+        function disableRightClick() {
+            alert("Sorry, right click is not allowed!");
+            return false;
+        }
+
+        function downloadFull() {
+            window.location.href = "https://github.com/Anupam1707/weather-app-py/releases/download/app_v2/Fullscreen.Weather.exe";
+        }
+
+        function downloadWindowed() {
+            window.location.href = "https://github.com/Anupam1707/weather-app-py/releases/download/app_v2/Windowed.Weather.exe";
+        }
+
+        function downloadPython() {
+            window.open("https://www.python.org/downloads/", "_blank");
+        }
     </script>
-  </body>
-</html
+</head>
+
+<body oncontextmenu="return disableRightClick();">
+    <header>
+        <h1>Weather Bulletin App</h1>
+        <h2>Stay Updated with the Latest Weather Information</h2>
+    </header>
+
+    <div class="content">
+        <p>Our Weather Bulletin App provides you with real-time weather updates for over 45,000 cities worldwide. Whether you're planning a trip, preparing for outdoor activities, or just curious about the weather, we've got you covered with the latest information.</p>
+        
+        <img src="https://raw.githubusercontent.com/Anupam1707/weather-app-py/main/web.png" alt="Weather App Screenshot" class="screenshot">
+        
+        <p>Features:</p>
+        <ul>
+            <li>City and Country Name</li>
+            <li>Local Time</li>
+            <li>Temperatures in Celsius, Fahrenheit, and Kelvin</li>
+            <li>Air Pressure</li>
+            <li>Humidity</li>
+            <li>Sunrise and Sunset Timings</li>
+            <li>Cloud Coverage</li>
+            <li>Wind Speed</li>
+            <li>Weather Status</li>
+        </ul>
+        
+        <p>Download the app now and get instant access to comprehensive weather data.</p>
+    </div>
+
+    <div class="buttons">
+        <button onclick="downloadPython()">Python Installer</button>
+        <button onclick="downloadFull()">Fullscreen App</button>
+        <button onclick="downloadWindowed()">Windowed App</button>
+    </div>
+
+    <footer>
+        &copy; 2024 Weather Bulletin App. All rights reserved.
+    </footer>
+</body>
+
+</html>
